@@ -1,5 +1,6 @@
 const isAnagram = (s, t) => {
   const record = new Map();
+  // 这一步必须判断，否则接下来 t 的判断会出错
   if(s.length !== t.length) return false;
   for(let i of s){
     if(!record.has(i)){
