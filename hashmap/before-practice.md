@@ -37,11 +37,23 @@ map.set("banana", 2);
 // 查找值
 console.log(map.get("apple")); // 输出: 1
 
+// 解构赋值遍历：
+for(let [key, value] of map){
+    console.log(key);
+    console.log(value);
+} 
+
 // 删除键值对
 map.delete("banana");
 
 // 检查键是否存在
 console.log(map.has("banana")); // 输出: false
+
+// 解构赋值遍历：
+for(let [key, value] of map){
+    console.log(key);
+    console.log(value);
+}
 ```
 
 #### 哈希集合（HashSet）
