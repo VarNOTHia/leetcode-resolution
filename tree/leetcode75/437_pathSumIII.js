@@ -14,7 +14,23 @@
 var pathSum = function(root, targetSum) {
   let sum = 0;
   const traversal = (root) => {
-    const stack = [];
-    
+    if(root){
+      checkSum(root, root.val);
+      root.left && traversal(root.left);
+      root.right && traversal(root.right);
+    }
   }
+
+  const checkSum = (root, val) => {
+    if(val == targetSum){
+      sum++;
+    }
+    if(root){
+      root.left && checkSum(root.left, val + root.left.val);
+      root.right && checkSum(root.right, val + root.right.val);
+    }
+  }
+
+  traversal(root);
+  return sum;
 };
