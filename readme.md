@@ -112,3 +112,10 @@ console.log(regex.test("abc"));    // false，字符串不包含数字
 
 **isNaN**：判断是不是数字。
 
+
+
+#### 迭代
+
+#### for of 与 for in 区别：
+
+https://juejin.cn/post/6916058482231754765
