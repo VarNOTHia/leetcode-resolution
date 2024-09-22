@@ -16,6 +16,7 @@ var trap = function(height) {
         既然是单调递减，那么如果左侧一直有一个很高的元素，即使已经计算过已有的容量。但它会一直保留到有比它更高的元素出现。
       */
       const top = stack.pop();
+      // 如果 stack 空了，就意味着找不到可以用的左板，直接跳过。
       if(stack.length === 0)  break;
       // 因为是单调递减栈，所以短板效应一定发生在最近的节点。
       // 因为 top 已经被 pop 掉了，这个时候的 left 就是 top 左边的元素。　　　

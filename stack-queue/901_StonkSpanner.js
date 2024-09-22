@@ -1,9 +1,9 @@
 
 var StockSpanner = function() {
+  // 维护一个单调递减的栈。 
   this.stack = [];
-  this.priceMap = [];
-  this.record = [];
   this.index = -1;
+  this.stack.push([-1, Infinity]);
 };
 
 /** 
@@ -12,17 +12,12 @@ var StockSpanner = function() {
  */
 StockSpanner.prototype.next = function(price) {
   this.index++;
-  this.priceMap[this.index] = price;
-  this.record[this.index] = 0;
-
-  while(this.stack.length > 0 && this.priceMap[this.stack[this.stack.length - 1]] > price){
-    let top = this.stack.length - 1;
-    this.record[top] = this.index - top;
+  while(price >= this.stack[this.stack.length - 1][1]){
     this.stack.pop();
   }
-  this.stack.push(this.index);
-  
-  return this.record[this.index];
+  this.stack.push([this.index, price]);
+  let result = this.index - this.stack[this.stack.length - 2][0];
+  return result;
 };
 
 /**
@@ -30,3 +25,8 @@ StockSpanner.prototype.next = function(price) {
  * var obj = new StockSpanner()
  * var param_1 = obj.next(price)
  */
+let stockSpanner = new StockSpanner();
+stockSpanner.next(31); // 返回 1
+stockSpanner.next(41);  // 返回 1
+stockSpanner.next(51);  // 返回 1
+stockSpanner.next(60);  // 返回 1
